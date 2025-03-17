@@ -22,7 +22,7 @@ test.describe('Register', () => {
     loginPage = new LoginPage(page);
   });
 
-  test('Registration with valid data / TC 001', async () => {
+  test('Registration with valid data / TC 1', async () => {
     await mainPage.goto();
     await mainPage.navigateToRegister();
 
@@ -48,14 +48,14 @@ test.describe('Register', () => {
 
     const successMessage = await loginPage.getSuccessMessage();
     expect(successMessage).toMatch(
-    new RegExp(`Account was successfully created.*${userData.email}`, 'i')
+      new RegExp(`Account was successfully created.*${userData.email}`, 'i')
     );
 
     const dataPath = path.resolve(__dirname, '../../data/user_data.json');
     fs.writeFileSync(dataPath, JSON.stringify({ login: userData.login, email: userData.email, password: userData.password }));
   });
 
-  test('Registration with empty fields / TC 002', async () => {
+  test('Registration with empty fields / TC 2', async () => {
     await mainPage.goto();
     await mainPage.navigateToRegister();
     await registerPage.clickSubmitButton();
@@ -68,7 +68,7 @@ test.describe('Register', () => {
     ]);
   });
 
-  test('Registration with valid data but different passwords / TC 003', async () => {
+  test('Registration with valid data but different passwords / TC 3', async () => {
     await mainPage.goto();
     await mainPage.navigateToRegister();
     await registerPage.clickSubmitButton();

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LostPasswordPage } from '../page/LostPasswordPage';
 import fs from 'fs';
 
-test('Password recovery with a valid email but without an activated account / TC 005', async ({ page }) => {
+test('Password recovery with a valid email but without an activated account / TC 5', async ({ page }) => {
   const lostPasswordPage = new LostPasswordPage(page);
   await lostPasswordPage.goto();
 

@@ -3,7 +3,7 @@ import { MainPage } from '../page/MainPage';
 import { LoginPage } from '../page/LoginPage';
 import fs from 'fs';
 
-test('Login with a valid data, but without an activated account / TC 004', async ({ page }) => {
+test('Login with a valid data, but without an activated account / TC 4', async ({ page }) => {
   const mainPage = new MainPage(page);
   const loginPage = new LoginPage(page);
 
