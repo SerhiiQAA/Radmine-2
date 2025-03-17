@@ -4,12 +4,6 @@ export class MainPage {
   readonly page: Page;
   readonly loginButton: Locator;
   readonly registerButton: Locator;
-  readonly homeButton: Locator;
-  readonly projectsButton: Locator;
-  readonly helpButton: Locator;
-  readonly searchField: Locator;
-  readonly searchProjectButton: Locator;
-  readonly searchProjectField: Locator;
 
   constructor(page: Page) {
     this.page = page;
