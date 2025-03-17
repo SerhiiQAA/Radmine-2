@@ -1,0 +1,251 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Register >> Registration with empty fields / TC 002
+- Location: /home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/test/register.spec.ts:58:7
+
+# Error details
+
+```
+Error: Timed out 5000ms waiting for expect(locator).not.toBeFocused()
+
+Locator: locator('#user_login')
+Expected: not focused
+Received: focused
+Call log:
+  - expect.not.toBeFocused with timeout 5000ms
+  - waiting for locator('#user_login')
+    9 × locator resolved to <input value="" size="25" type="text" id="user_login" name="user[login]"/>
+      - unexpected value "focused"
+
+    at /home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/test/register.spec.ts:64:46
+```
+
+# Page snapshot
+
+```yaml
+- list:
+  - listitem:
+    - link "Sign in"
+  - listitem:
+    - link "Register"
+- list:
+  - listitem:
+    - link "Home"
+  - listitem:
+    - link "Projects"
+  - listitem:
+    - link "Help"
+- link "Search"
+- text: ":"
+- textbox "Search:"
+- text: Jump to a project...
+- heading "Redmine" [level=1]
+- insertion
+- heading "Register" [level=2]
+- list:
+  - listitem: Email cannot be blank
+  - listitem: Login cannot be blank
+  - listitem: First name cannot be blank
+  - listitem: Last name cannot be blank
+  - listitem: Password is too short (minimum is 8 characters)
+- paragraph:
+  - text: Login *
+  - textbox "Login *"
+- paragraph:
+  - text: Password *
+  - textbox "Password *"
+  - emphasis: Must be at least 8 characters long.
+- paragraph:
+  - text: Confirmation *
+  - textbox "Confirmation *"
+- paragraph:
+  - text: First name *
+  - textbox "First name *"
+- paragraph:
+  - text: Last name *
+  - textbox "Last name *"
+- paragraph:
+  - text: Email *
+  - textbox "Email *"
+- paragraph:
+  - text: Hide my email address
+  - checkbox "Hide my email address" [checked]
+- paragraph:
+  - text: Language
+  - combobox "Language":
+    - option "(auto)"
+    - option "Albanian (Shqip)"
+    - option "Arabic (عربي)"
+    - option "Azerbaijani (Azeri)"
+    - option "Basque (Euskara)"
+    - option "Bosnian (Bosanski)"
+    - option "Bulgarian (Български)"
+    - option "Catalan (Català)"
+    - option "Chinese/Simplified (简体中文)"
+    - option "Chinese/Traditional (繁體中文)"
+    - option "Croatian (Hrvatski)"
+    - option "Czech (Čeština)"
+    - option "Danish (Dansk)"
+    - option "Dutch (Nederlands)"
+    - option "English" [selected]
+    - option "English (British)"
+    - option "Estonian (Eesti)"
+    - option "Finnish (Suomi)"
+    - option "French (Français)"
+    - option "Galician (Galego)"
+    - option "German (Deutsch)"
+    - option "Greek (Ελληνικά)"
+    - option "Hebrew (עברית)"
+    - option "Hungarian (Magyar)"
+    - option "Indonesian (Bahasa Indonesia)"
+    - option "Italian (Italiano)"
+    - option "Japanese (日本語)"
+    - option "Korean (한국어)"
+    - option "Latvian (Latviešu)"
+    - option "Lithuanian (lietuvių)"
+    - option "Macedonian (Македонски)"
+    - option "Mongolian (Монгол)"
+    - option "Norwegian (Norsk bokmål)"
+    - option "Persian (فارسی)"
+    - option "Polish (Polski)"
+    - option "Portuguese (Português)"
+    - option "Portuguese/Brazil (Português/Brasil)"
+    - option "Romanian (Română)"
+    - option "Russian (Русский)"
+    - option "Serbian (Srpski)"
+    - option "Serbian Cyrillic (Српски)"
+    - option "Slovak (Slovenčina)"
+    - option "Slovene (Slovenščina)"
+    - option "Spanish (Español)"
+    - option "Spanish/Panama (Español/Panamá)"
+    - option "Swedish (Svenska)"
+    - option "Thai (ไทย)"
+    - option "Turkish (Türkçe)"
+    - option "Ukrainian (Українська)"
+    - option "Vietnamese (Tiếng Việt)"
+- paragraph:
+  - text: Organization
+  - textbox "Organization"
+- paragraph:
+  - text: Location
+  - textbox "Location"
+- paragraph:
+  - text: IRC nick
+  - textbox "IRC nick"
+- button "Submit"
+- text: Powered by
+- link "Redmine"
+- text: © 2006-2023 Jean-Philippe Lang
+- insertion
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '@playwright/test';
+   2 | import { MainPage } from '../page/MainPage';
+   3 | import { RegisterPage } from '../page/RegisterPage';
+   4 | import { LoginPage } from '../page/LoginPage';
+   5 | import { faker } from '@faker-js/faker';
+   6 | import fs from 'fs';
+   7 | import path from 'path';
+   8 |
+   9 | let mainPage: MainPage;
+  10 | let registerPage: RegisterPage;
+  11 | let loginPage: LoginPage;
+  12 | let userData = {
+  13 |   login: '',
+  14 |   email: '',
+  15 |   password: ''
+  16 | };
+  17 |
+  18 | test.describe('Register', () => {
+  19 |   test.beforeEach(async ({ page }) => {
+  20 |     mainPage = new MainPage(page);
+  21 |     registerPage = new RegisterPage(page);
+  22 |     loginPage = new LoginPage(page);
+  23 |   });
+  24 |
+  25 |   test('Registration with valid data / TC 001', async () => {
+  26 |     await mainPage.goto();
+  27 |     await mainPage.navigateToRegister();
+  28 |
+  29 |     userData.password = faker.internet.password({ length: 10 });
+  30 |     userData.email = faker.internet.email();
+  31 |     userData.login = faker.internet.displayName();
+  32 |
+  33 |     const newUser = {
+  34 |       login: userData.login,
+  35 |       password: userData.password,
+  36 |       confirmPassword: userData.password,
+  37 |       firstName: faker.person.firstName(),
+  38 |       lastName: faker.person.lastName(),
+  39 |       email: userData.email,
+  40 |       organization: faker.company.name(),
+  41 |       location: faker.location.city(),
+  42 |       ircNick: faker.internet.displayName(),
+  43 |     };
+  44 |
+  45 |     await registerPage.fillRegisterForm(newUser);
+  46 |     await registerPage.clickRegisterButton();
+  47 |     await expect(registerPage.page).toHaveURL('/login');
+  48 |
+  49 |     const successMessage = await loginPage.getSuccessMessage();
+  50 |     expect(successMessage).toMatch(
+  51 |     new RegExp(`Account was successfully created.*${userData.email}`, 'i')
+  52 |     );
+  53 |
+  54 |     const dataPath = path.resolve(__dirname, '../../data/user_data.json');
+  55 |     fs.writeFileSync(dataPath, JSON.stringify({ login: userData.login, email: userData.email, password: userData.password }));
+  56 |   });
+  57 |
+  58 |   test('Registration with empty fields / TC 002', async () => {
+  59 |     await mainPage.goto();
+  60 |     await mainPage.navigateToRegister();
+  61 |     await registerPage.clickRegisterButton();
+  62 |     await expect(registerPage.userLogin).toBeFocused();
+  63 |     await registerPage.clickRegisterButton();
+> 64 |     await expect(registerPage.userLogin).not.toBeFocused();
+     |                                              ^ Error: Timed out 5000ms waiting for expect(locator).not.toBeFocused()
+  65 |     await expect(registerPage.errorMessages).toContainText([
+  66 |       'Email cannot be blank',
+  67 |       'Login cannot be blank',
+  68 |       'First name cannot be blank',
+  69 |       'Last name cannot be blank',
+  70 |       'Password is too short (minimum is 8 characters)',
+  71 |     ]);
+  72 |   });
+  73 |
+  74 |   test('Registration with different passwords / TC 003', async () => {
+  75 |     await mainPage.goto();
+  76 |     await mainPage.navigateToRegister();
+  77 |     await registerPage.clickRegisterButton();
+  78 |
+  79 |     const newUser = {
+  80 |       login: faker.internet.displayName(),
+  81 |       password: faker.internet.password({ length: 10 }),
+  82 |       confirmPassword: faker.internet.password({ length: 8 }),
+  83 |       firstName: faker.person.firstName(),
+  84 |       lastName: faker.person.lastName(),
+  85 |       email: faker.internet.email(),
+  86 |       organization: faker.company.name(),
+  87 |       location: faker.location.city(),
+  88 |       ircNick: faker.internet.displayName(),
+  89 |     };
+  90 |
+  91 |     await registerPage.fillRegisterForm(newUser);
+  92 |     await registerPage.clickRegisterButton();
+  93 |     await expect(registerPage.errorMessages).toContainText([
+  94 |       "Password doesn't match confirmation",
+  95 |     ]);
+  96 |   });
+  97 | });
+  98 |
+  99 |
+```
