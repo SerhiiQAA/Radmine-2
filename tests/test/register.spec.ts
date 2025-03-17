@@ -23,6 +23,7 @@ test.describe('Register', () => {
 
     await mainPage.goto();
     await mainPage.navigateToRegister();
+    await expect(registerPage.page).toHaveURL('account/register');
   });
 
   test('Registration with valid data / TC 1', async () => {
