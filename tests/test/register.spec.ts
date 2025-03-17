@@ -20,12 +20,12 @@ test.describe('Register', () => {
     mainPage = new MainPage(page);
     registerPage = new RegisterPage(page);
     loginPage = new LoginPage(page);
+
+    await mainPage.goto();
+    await mainPage.navigateToRegister();
   });
 
   test('Registration with valid data / TC 1', async () => {
-    await mainPage.goto();
-    await mainPage.navigateToRegister();
-
     userData.password = faker.internet.password({ length: 10 });
     userData.email = faker.internet.email();
     userData.login = faker.internet.displayName();
@@ -56,8 +56,6 @@ test.describe('Register', () => {
   });
 
   test('Registration with empty fields / TC 2', async () => {
-    await mainPage.goto();
-    await mainPage.navigateToRegister();
     await registerPage.clickSubmitButton();
     await expect(registerPage.errorMessages).toContainText([
       'Email cannot be blank',
@@ -69,10 +67,6 @@ test.describe('Register', () => {
   });
 
   test('Registration with valid data but different passwords / TC 3', async () => {
-    await mainPage.goto();
-    await mainPage.navigateToRegister();
-    await registerPage.clickSubmitButton();
-
     const newUser = {
       login: faker.internet.displayName(),
       password: faker.internet.password({ length: 10 }),
