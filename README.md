@@ -49,10 +49,11 @@ To generate and view Allure reports:
     npm run report:open
     ```
 ## Running Tests with Report Generation:
+    Running Tests with Report
     ```bash
     npm run test:report
     ```
-    
+
 ## GitHub Actions
 
 The project uses GitHub Actions for CI/CD. The pipeline is defined in the `playwright.yml` file. The steps include:
