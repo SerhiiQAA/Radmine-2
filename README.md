@@ -11,14 +11,12 @@ This project contains automated tests using Playwright and generates test report
 ## Getting Started
 
 1. **Clone the repository:**
-
     ```bash
     git clone https://github.com/yourusername/yourrepository.git
     cd yourrepository
     ```
 
 2. **Install dependencies:**
-
     ```bash
     npm install
     ```
@@ -32,27 +30,16 @@ This project contains automated tests using Playwright and generates test report
     ```bash
     npm run test:headed
     ```
-    Running Tests with Report Generation:
-    ```bash
-    npm run test:report
-    ```
 
 ## Allure Report
-
 To generate and view Allure reports:
 
 1. **Install Allure CLI:**
-
     ```bash
     sudo npm install -g allure-commandline --save-dev
     ```
 
-2. **Generate Allure Report:**
-    ```bash
-    allure generate allure-results --clean -o allure-report
-    ```
-3. **Generate and View Reports Manually:**
-
+2. **Generate and View Reports Manually:**
     Generate the report:
     ```bash
     npm run report:generate
@@ -61,7 +48,11 @@ To generate and view Allure reports:
     ```bash
     npm run report:open
     ```
-
+## Running Tests with Report Generation:
+    ```bash
+    npm run test:report
+    ```
+    
 ## GitHub Actions
 
 The project uses GitHub Actions for CI/CD. The pipeline is defined in the `playwright.yml` file. The steps include:
