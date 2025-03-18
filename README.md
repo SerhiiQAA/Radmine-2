@@ -49,7 +49,7 @@ To generate and view Allure reports:
     npm run report:open
     ```
 ## Running Tests with Report Generation:
-    Running Tests with Report
+    Running Tests with Report:
     ```bash
     npm run test:report
     ```
