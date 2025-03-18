@@ -24,9 +24,17 @@ This project contains automated tests using Playwright and generates test report
     ```
 
 3. **Running Tests:**
-
+    To run tests in headless mode (default):
     ```bash
-    npx playwright test
+    npm test
+    ```
+    To run tests in visible mode:
+    ```bash
+    npm run test:headed
+    ```
+    Running Tests with Report Generation:
+    ```bash
+    npm run test:report
     ```
 
 ## Allure Report
@@ -40,15 +48,18 @@ To generate and view Allure reports:
     ```
 
 2. **Generate Allure Report:**
-
     ```bash
     allure generate allure-results --clean -o allure-report
     ```
+3. **Generate and View Reports Manually:**
 
-3. **Open Allure Report:**
-
+    Generate the report:
     ```bash
-    allure open allure-report
+    npm run report:generate
+    ```
+    Open the report:
+    ```bash
+    npm run report:open
     ```
 
 ## GitHub Actions
