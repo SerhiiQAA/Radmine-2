@@ -1,0 +1,317 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Login with a valid data, but without an activated account / TC 4
+- Location: /home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/test/login.spec.ts:6:5
+
+# Error details
+
+```
+Error: page.goto: Test timeout of 30000ms exceeded.
+Call log:
+  - navigating to "https://www.redmine.org/", waiting until "load"
+
+    at MainPage.goto (/home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/page/MainPage.ts:15:21)
+    at /home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/test/login.spec.ts:10:18
+```
+
+# Page snapshot
+
+```yaml
+- list:
+  - listitem:
+    - link "Sign in"
+  - listitem:
+    - link "Register"
+- list:
+  - listitem:
+    - link "Home"
+  - listitem:
+    - link "Projects"
+  - listitem:
+    - link "Help"
+- link "Search"
+- text: ":"
+- textbox "Search:"
+- text: Redmine
+- heading "Redmine" [level=1]
+- list:
+  - listitem:
+    - link "Overview"
+  - listitem:
+    - link "Download"
+  - listitem:
+    - link "Activity"
+  - listitem:
+    - link "Roadmap"
+  - listitem:
+    - link "Issues"
+  - listitem:
+    - link "News"
+  - listitem:
+    - link "Wiki"
+  - listitem:
+    - link "Forums"
+  - listitem:
+    - link "Repository"
+- heading "Latest releases" [level=3]
+- paragraph:
+  - link "5.0.12 (2025-03-10)"
+  - link "5.1.7 (2025-03-10)"
+  - link "6.0.4 (2025-03-10)"
+- heading "Resources" [level=3]
+- paragraph:
+  - link "User's Guide"
+  - link "Developer's Guide"
+  - link "Changelog"
+  - text: ","
+  - link "Security"
+  - link "FAQ"
+  - text: ","
+  - link "HowTo's"
+  - link "Plugins"
+  - text: ","
+  - link "Themes"
+  - link "Privacy Policy"
+- heading "Wiki" [level=3]
+- list:
+  - listitem:
+    - link "Start page"
+  - listitem:
+    - link "Index by title"
+  - listitem:
+    - link "Index by date"
+- insertion
+- text: Actions
+- heading "Redmine" [level=1]
+- list:
+  - listitem:
+    - strong: Table of contents
+  - listitem:
+    - link "Redmine"
+    - list:
+      - listitem:
+        - link "Features"
+      - listitem:
+        - link "Documentation"
+      - listitem:
+        - link "Online demo"
+      - listitem:
+        - link "Support & getting help"
+      - listitem:
+        - link "Contributing and helping out"
+      - listitem:
+        - link "Who uses Redmine?"
+      - listitem:
+        - link "Redmine books"
+- paragraph: Redmine is a flexible project management web application. Written using the Ruby on Rails framework, it is cross-platform and cross-database.
+- paragraph:
+  - text: Redmine is open source and released under the terms of the
+  - link "GNU General Public License v2"
+  - text: (GPL).
+- heading "Features" [level=2]
+- paragraph: "Some of the main features of Redmine are:"
+- list:
+  - listitem:
+    - link "Multiple projects support"
+  - listitem:
+    - text: Flexible
+    - link "role based access control"
+  - listitem:
+    - text: Flexible
+    - link "issue tracking system"
+  - listitem:
+    - link "Gantt chart"
+    - text: and
+    - link "calendar"
+  - listitem:
+    - link "News"
+    - text: ","
+    - link "documents"
+    - text: "&"
+    - link "files"
+    - text: management
+  - listitem: Feeds & email notifications
+  - listitem:
+    - text: Per project
+    - link "wiki"
+  - listitem:
+    - text: Per project
+    - link "forums"
+  - listitem:
+    - link "Time tracking"
+  - listitem:
+    - link "Custom fields"
+    - text: for issues, time-entries, projects and users
+  - listitem:
+    - link "SCM integration"
+    - text: (SVN, CVS, Git, Mercurial and Bazaar)
+  - listitem:
+    - link "Issue creation via email"
+  - listitem:
+    - text: Multiple
+    - link "LDAP authentication"
+    - text: support
+  - listitem:
+    - link "User self-registration"
+    - text: support
+  - listitem: Multilanguage support
+  - listitem:
+    - link "Multiple databases"
+    - text: support
+- paragraph:
+  - text: Read more about
+  - link "Redmine features"
+  - text: .
+- heading "Documentation" [level=2]
+- paragraph:
+  - text: You can read the
+  - strong:
+    - link "Redmine guide"
+  - text: .
+- list:
+  - listitem:
+    - link "User's Guide"
+  - listitem:
+    - link "Developer's Guide"
+- text: "Other resources:"
+- list:
+  - listitem:
+    - link "Changelog"
+  - listitem:
+    - link "Security Advisories"
+  - listitem:
+    - link "Frequently Asked Questions"
+  - listitem:
+    - link "HowTos"
+  - listitem:
+    - link "Plugins"
+  - listitem:
+    - link "Themes"
+  - listitem:
+    - link "Logo and Icon"
+  - listitem:
+    - link "Third Party Tools"
+- heading "Online demo" [level=2]
+- paragraph:
+  - text: A shared online
+  - emphasis: unofficial
+  - text: demo site can be found at
+  - link "https://demo.redminecloud.net/"
+  - text: . It has been set up to give registered users the ability to create their own projects. This means that once you register, you can create your own project on there and try out the project administration features. Please note that this demo site is an unofficial, third-party site and has no connection to Redmine.org.
+- heading "Support & getting help" [level=2]
+- paragraph:
+  - text: For getting help or discussing Redmine, you can browse the
+  - strong:
+    - link "Redmine forums"
+  - text: hosted right here in Redmine.
+- paragraph:
+  - text: We also have a
+  - strong:
+    - link "chatroom"
+  - text: "-"
+  - 'link "join #redmine"'
+  - text: on the
+  - link "libera.chat"
+  - text: IRC network.
+- paragraph:
+  - text: There's also an unofficial workspace on
+  - strong:
+    - link "Slack"
+  - text: where you can ask questions and participate in discussions with other Redmine users.
+- paragraph:
+  - text: Before submitting a bug report, a patch or a feature request here, please read the
+  - link "Submission guidelines"
+  - text: .
+- heading "Contributing and helping out" [level=2]
+- paragraph:
+  - text: Redmine is built and maintained by community volunteers. If you enjoy using it and would like to give back to the community, the
+  - link "Contribute"
+  - text: page has several ideas. Software development experience is not required. Check out the
+  - link "Teams"
+  - text: Page if you are interested in a specific area to contribute regularly.
+- paragraph:
+  - text: You can also make a donation and get listed on the
+  - link "Redmine Donors page"
+  - text: .
+- heading "Who uses Redmine?" [level=2]
+- paragraph:
+  - link "This page lists"
+  - text: some companies and projects using Redmine.
+- heading "Redmine books" [level=2]
+- table:
+  - rowgroup:
+    - row:
+      - cell:
+        - link
+      - cell:
+        - link
+      - cell:
+        - link
+    - 'row "Mastering Redmine 2nd Edition is a comprehensive guide with tips, tricks and best practices for using Redmine. You can buy it online. Redmine Plugin Extension and Development provides an overview of the tools available to developers who want to extend Redmine to work their way. You can buy it online. Redmine Cookbook: over 80 hands-on recipes to improve your skills in project management, team management, process improvement, and Redmine administration. You can buy it online."':
+      - cell "Mastering Redmine 2nd Edition is a comprehensive guide with tips, tricks and best practices for using Redmine. You can buy it online.":
+        - emphasis: Mastering Redmine 2nd Edition
+        - text: is a comprehensive guide with tips, tricks and best practices for using Redmine. You can
+        - link "buy it online"
+        - text: .
+      - cell "Redmine Plugin Extension and Development provides an overview of the tools available to developers who want to extend Redmine to work their way. You can buy it online.":
+        - emphasis: Redmine Plugin Extension and Development
+        - text: provides an overview of the tools available to developers who want to extend Redmine to work their way. You can
+        - link "buy it online"
+        - text: .
+      - 'cell "Redmine Cookbook: over 80 hands-on recipes to improve your skills in project management, team management, process improvement, and Redmine administration. You can buy it online."':
+        - emphasis: Redmine Cookbook
+        - text: ": over 80 hands-on recipes to improve your skills in project management, team management, process improvement, and Redmine administration. You can"
+        - link "buy it online"
+        - text: .
+- group "Files (0)"
+- paragraph:
+  - text: Updated by
+  - link "Go MAEDA"
+  - link "28 days"
+  - text: ago ·
+  - link "86 revisions"
+  - text: locked
+- text: Powered by
+- link "Redmine"
+- text: © 2006-2023 Jean-Philippe Lang
+- log
+- log
+```
+
+# Test source
+
+```ts
+   1 | import { type Locator, type Page } from '@playwright/test';
+   2 |
+   3 | export class MainPage {
+   4 |   readonly page: Page;
+   5 |   readonly loginButton: Locator;
+   6 |   readonly registerButton: Locator;
+   7 |
+   8 |   constructor(page: Page) {
+   9 |     this.page = page;
+  10 |     this.loginButton = page.locator('.login');
+  11 |     this.registerButton = page.locator('.register');
+  12 |   }
+  13 |
+  14 |   async goto() {
+> 15 |     await this.page.goto('/');
+     |                     ^ Error: page.goto: Test timeout of 30000ms exceeded.
+  16 |   }
+  17 |
+  18 |   async navigateToLogin() {
+  19 |     await this.loginButton.click();
+  20 |   }
+  21 |
+  22 |   async navigateToRegister() {
+  23 |     await this.registerButton.click();
+  24 |   }
+  25 | }
+  26 |
+```
