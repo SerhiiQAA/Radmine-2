@@ -1,0 +1,90 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Register >> Registration with empty fields / TC 2
+- Location: /home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/test/register.spec.ts:59:7
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('//input[@type="submit"]')
+
+    at RegisterPage.clickSubmitButton (/home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/page/RegisterPage.ts:49:31)
+    at /home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/test/register.spec.ts:60:24
+```
+
+# Page snapshot
+
+```yaml
+- heading "This website is under heavy load (queue full)" [level=2]
+- paragraph: We're sorry, too many people are accessing this website at the same time. We're working on this problem. Please try again later.
+```
+
+# Test source
+
+```ts
+   1 | import { type Locator, type Page } from '@playwright/test';
+   2 |
+   3 | export class RegisterPage {
+   4 |   readonly page: Page;
+   5 |   readonly userLogin: Locator;
+   6 |   readonly userPassword: Locator;
+   7 |   readonly userPasswordConfirmation: Locator;
+   8 |   readonly userFirstName: Locator;
+   9 |   readonly userLastName: Locator;
+  10 |   readonly userEmail: Locator;
+  11 |   readonly organization: Locator;
+  12 |   readonly location: Locator;
+  13 |   readonly ircNick: Locator;
+  14 |   readonly registerButton: Locator;
+  15 |   readonly errorMessages: Locator;
+  16 |
+  17 |   constructor(page: Page) {
+  18 |     this.page = page;
+  19 |     this.userLogin = page.locator('#user_login');
+  20 |     this.userPassword = page.locator('#user_password');
+  21 |     this.userPasswordConfirmation = page.locator('#user_password_confirmation');
+  22 |     this.userFirstName = page.locator('#user_firstname');
+  23 |     this.userLastName = page.locator('#user_lastname');
+  24 |     this.userEmail = page.locator('#user_mail');
+  25 |     this.organization = page.locator('#user_custom_field_values_5');
+  26 |     this.location = page.locator('#user_custom_field_values_6');
+  27 |     this.ircNick = page.locator('#user_custom_field_values_3');
+  28 |     this.registerButton = page.locator('//input[@type="submit"]');
+  29 |     this.errorMessages = page.locator('//div[@id="errorExplanation"]//li');
+  30 |   }
+  31 |
+  32 |   async goto() {
+  33 |     await this.page.goto('account/register');
+  34 |   }
+  35 |
+  36 |   async fillRegisterForm(data: Partial<Record<string, string>>) {
+  37 |     if (data.login) await this.userLogin.fill(data.login);
+  38 |     if (data.password) await this.userPassword.fill(data.password);
+  39 |     if (data.confirmPassword) await this.userPasswordConfirmation.fill(data.confirmPassword);
+  40 |     if (data.firstName) await this.userFirstName.fill(data.firstName);
+  41 |     if (data.lastName) await this.userLastName.fill(data.lastName);
+  42 |     if (data.email) await this.userEmail.fill(data.email);
+  43 |     if (data.organization) await this.organization.fill(data.organization);
+  44 |     if (data.location) await this.location.fill(data.location);
+  45 |     if (data.ircNick) await this.ircNick.fill(data.ircNick);
+  46 |   }
+  47 |
+  48 |   async clickSubmitButton() {
+> 49 |     await this.registerButton.click();
+     |                               ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  50 |   }
+  51 |
+  52 |   async getErrorMessages() {
+  53 |     return this.errorMessages.allTextContents();
+  54 |   }
+  55 | }
+  56 |
+```
