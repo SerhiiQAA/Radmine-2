@@ -36,7 +36,7 @@ To generate and view Allure reports:
 
 1. **Install Allure CLI:**
     ```bash
-    sudo npm install -g allure-commandline --save-dev
+    npm install allure-commandline -D
     ```
 
 2. **Generate and View Reports Manually:**
