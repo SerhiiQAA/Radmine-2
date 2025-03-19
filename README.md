@@ -6,7 +6,6 @@ This project contains automated tests using Playwright and generates test report
 
 - Node.js
 - npm
-- Playwright
 
 ## Getting Started
 
