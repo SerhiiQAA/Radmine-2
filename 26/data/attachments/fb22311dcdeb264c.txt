@@ -1,0 +1,89 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Password recovery with a valid email but without an activated account / TC 5
+- Location: /home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/test/lostPassword.spec.ts:5:5
+
+# Error details
+
+```
+Error: page.goto: Test timeout of 30000ms exceeded.
+Call log:
+  - navigating to "https://www.redmine.org/account/lost_password", waiting until "load"
+
+    at LostPasswordPage.goto (/home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/page/LostPasswordPage.ts:17:21)
+    at /home/user/Documents/QA_Automation_projects/Playwright/Radmine 2/tests/test/lostPassword.spec.ts:7:26
+```
+
+# Page snapshot
+
+```yaml
+- list:
+  - listitem:
+    - link "Sign in"
+  - listitem:
+    - link "Register"
+- list:
+  - listitem:
+    - link "Home"
+  - listitem:
+    - link "Projects"
+  - listitem:
+    - link "Help"
+- link "Search"
+- text: ":"
+- textbox "Search:"
+- text: Jump to a project...
+- heading "Redmine" [level=1]
+- insertion
+- heading "Lost password" [level=2]
+- paragraph:
+  - text: Email *
+  - textbox "Email *"
+  - button "Submit"
+- text: Powered by
+- link "Redmine"
+- text: © 2006-2023 Jean-Philippe Lang
+```
+
+# Test source
+
+```ts
+   1 | import { type Locator, type Page } from '@playwright/test';
+   2 |
+   3 | export class LostPasswordPage {
+   4 |   readonly page: Page;
+   5 |   readonly emailInput: Locator;
+   6 |   readonly submitButton: Locator;
+   7 |   readonly errorMessage: Locator;
+   8 |
+   9 |   constructor(page: Page) {
+  10 |     this.page = page;
+  11 |     this.emailInput = page.locator('#mail');
+  12 |     this.submitButton = page.locator('//input[@type="submit"]');
+  13 |     this.errorMessage = page.locator('#flash_error');
+  14 |   }
+  15 |
+  16 |   async goto() {
+> 17 |     await this.page.goto('/account/lost_password');
+     |                     ^ Error: page.goto: Test timeout of 30000ms exceeded.
+  18 |   }
+  19 |
+  20 |   async fillEmail(email: string) {
+  21 |     await this.emailInput.fill(email);
+  22 |   }
+  23 |
+  24 |   async clickSubmitButton() {
+  25 |     await this.submitButton.click();
+  26 |   }
+  27 |
+  28 |   async getErrorMessage() {
+  29 |     return this.errorMessage.textContent();
+  30 |   }
+  31 | }
+```
