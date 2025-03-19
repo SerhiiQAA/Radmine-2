@@ -15,17 +15,11 @@ This project contains automated tests using Playwright and generates test report
     git clone https://github.com/yourusername/yourrepository.git
     cd yourrepository
     ```
-
-2. **Install dependencies:**
-    ```bash
-    npm install
-    ```
-3. **Install playwright:**
+2. **Install playwright:**
     ```bash
     npm run install:playwright
     ```
-
-4. **Running Tests:**
+3. **Running Tests:**
     To run tests in headless mode (default):
     ```bash
     npm test
