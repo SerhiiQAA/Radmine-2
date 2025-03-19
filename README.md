@@ -20,8 +20,12 @@ This project contains automated tests using Playwright and generates test report
     ```bash
     npm install
     ```
+3. **Install playwright:**
+    ```bash
+    npm run install:playwright
+    ```
 
-3. **Running Tests:**
+4. **Running Tests:**
     To run tests in headless mode (default):
     ```bash
     npm test

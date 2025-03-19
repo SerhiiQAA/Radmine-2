@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+  "install:playwright": "npm init playwright@latest",
   "test": "npx playwright test",
   "test:headed": "npx playwright test --headed",
   "report:generate": "allure generate allure-results --clean -o allure-report",
