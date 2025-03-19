@@ -30,7 +30,7 @@ This project contains automated tests using Playwright and generates test report
     ```
 
 ## Allure Report
-To generate and view Allure reports:
+    To generate and view Allure reports:
 
 1. **Install Allure CLI:**
     ```bash
@@ -38,6 +38,7 @@ To generate and view Allure reports:
     ```
 
 2. **Generate and View Reports Manually:**
+   
     Generate the report:
     ```bash
     npm run report:generate
