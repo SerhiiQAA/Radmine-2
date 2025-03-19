@@ -9,7 +9,7 @@ export class LostPasswordPage {
   constructor(page: Page) {
     this.page = page;
     this.emailInput = page.locator('#mail');
-    this.submitButton = page.locator('//input[@type="submit"]');
+    this.submitButton = page.locator('[type="submit"]');
     this.errorMessage = page.locator('#flash_error');
   }
 

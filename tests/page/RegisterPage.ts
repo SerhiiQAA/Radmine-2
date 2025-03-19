@@ -25,8 +25,8 @@ export class RegisterPage {
     this.organization = page.locator('#user_custom_field_values_5');
     this.location = page.locator('#user_custom_field_values_6');
     this.ircNick = page.locator('#user_custom_field_values_3');
-    this.registerButton = page.locator('//input[@type="submit"]');
-    this.errorMessages = page.locator('//div[@id="errorExplanation"]//li');
+    this.registerButton = page.locator('[type="submit"]');
+    this.errorMessages = page.locator('#errorExplanation li');
   }
 
   async goto() {
